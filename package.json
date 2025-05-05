@@ -1,20 +1,20 @@
 {
   "name": "matchpoint",
   "version": "1.0.0",
-  "description": "let's try to do it",
-  "keywords": [
-    "node",
-    "express"
-  ],
+  "description": "trying to make it",
+  "homepage": "https://github.com/Abkas/MATCHPOINT#readme",
+  "bugs": {
+    "url": "https://github.com/Abkas/MATCHPOINT/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abkas/MATCHPOINT.git"
+  },
   "license": "ISC",
-  "author": "Abhishek Magar",
-  "type": "commonjs",
+  "author": "abhishek magar",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 const PlayerSchema = new Schema(
     {
         username:{
-            typer: String,
+            type: String,
             required: true,
             unique: true,
             trim: true,

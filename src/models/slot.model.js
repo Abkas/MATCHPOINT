@@ -27,18 +27,14 @@ const SlotSchema = new Schema({
         type: Number,
         default: 10 
     },
-    isFull: { 
-        type: Boolean,
-         default: false 
-        },
     price:{
         type: Number,
         required: true
     },
     Slotstatus: { 
-    type: String, 
-    enum: Object.values(SLOT_STATUS), 
-    default: SLOT_STATUS.AVAILABLE 
+        type: String, 
+        enum: Object.values(SLOT_STATUS), 
+        default: SLOT_STATUS.AVAILABLE 
     },
     paymentStatus: [
         { 
@@ -86,6 +82,14 @@ SlotSchema.methods.getPaymentStatus = function (playerId) {
 
 SlotSchema.methods.getPlayersJoined = function () {
     return this.players
+}
+
+SlotSchema.methods.isAvailable = function () {
+    return !this.isFull() && !this.bookedOffline;
+}
+
+SlotSchema.methods.isFull = function () {
+    return this.players.length >= this.maxPlayers;
 }
 
 SlotSchema.statics.findByFutsalAndDate = function (futsalId, date) {

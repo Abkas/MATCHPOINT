@@ -6,14 +6,14 @@ import { ApiResponse } from '../utils/ApiResponse.js'
 
 const createSlot = asyncHandler(async (req, res) => {
     const { date, time, price, maxPlayers } = req.body
-    const{futsal} = req.params
+    const { futsalId } = req.params
 
-    if (!futsal || !date || !time || !price || !maxPlayers) {
+    if (!futsalId || !date || !time || !price || !maxPlayers) {
         throw new ApiError(400, 'All fields are required')
     }
 
     const newSlot = await Slot.create({
-        futsal,
+        futsal: futsalId,
         date,
         time,
         price,
@@ -21,9 +21,10 @@ const createSlot = asyncHandler(async (req, res) => {
     })
 
     const newGame = await Game.create({
-        futsal,
+        futsal: futsalId,
         slot: newSlot._id,
         players: [],
+        time
     })
 
     return res
@@ -69,10 +70,10 @@ const getSlotsByFutsal = asyncHandler(async (req, res) => {
 })
 
 const joinSlot = asyncHandler(async (req, res) => {
-    const {slotId} = req.params
+    const {id} = req.params
 
-    const playerId = req.user
-    const slot = await Slot.findById(slotId)
+    const playerId = req.user._id
+    const slot = await Slot.findById(id)
 
     if (!slot) {
         throw new ApiError(404, 'Slot not found')
@@ -80,7 +81,7 @@ const joinSlot = asyncHandler(async (req, res) => {
     await slot.addPlayer(playerId)
 
     if (slot.isFull()) {
-        const game = await Game.findOne({ slot: slotId });
+        const game = await Game.findOne({ slot: id });
         game.status = 'ready_to_play'
         await game.save()
     }

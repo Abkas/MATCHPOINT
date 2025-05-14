@@ -3,41 +3,39 @@ import { ApiError } from '../utils/ApiError.js'
 import { Game } from '../models/game.model.js'
 import { Slot } from '../models/slot.model.js'
 import { ApiResponse } from '../utils/ApiResponse.js'
+import { User } from '../models/user.model.js'
+import { OrganizerProfile } from '../models/organizerprofile.model.js'
 
-const getGameById = asyncHandler(async (req, res) => {
-    const { gameId } = req.params
 
-    const game = await Game.findById(gameId)
-        .populate('futsal')   
-        .populate('slot') 
-        .populate('players')
-        .populate('feedbacks.player')
+const createGame = asyncHandler(async (req, res) => {
+    const userId = req.user._id;
 
-    if (!game) {
-        throw new ApiError(404, 'Game not found')
+    const organizerProfile = await OrganizerProfile.findOne({ user: userId })
+    if (!organizerProfile || !organizerProfile.futsals.length) {
+        throw new ApiError(400, 'Organizer is not associated with any futsal')
     }
 
-    return res
-    .status(200)
-    .json(new ApiResponse(200, game, 'Game retrieved successfully'));
-})
+    const futsal = organizerProfile.futsals[0]
 
+    const { slotTime, result, time } = req.body
 
-const createGame = asyncHandler(async(req,res) =>{
-
-    const{organizer} = user._id
-    const{futsal, slot, players, result} =req.body
-
-    if (!futsal || !slot) {
-        throw new ApiError(400, 'Futsal and slot are required')
+    const slot = await Slot.findOne({ futsal, time: slotTime })
+    if (!slot) {
+        throw new ApiError(400, 'Slot not found for the given time')
     }
 
-    const newGame = new Game({ futsal, slot, players, result })
+    const newGame = new Game({ 
+        futsal, 
+        slot: slot._id, 
+        players: [], 
+        result, 
+        time 
+    })
     await newGame.save()
 
     return res
-    .status(201)
-    .json(new ApiResponse(201, newGame, 'Game created successfully'))
+        .status(201)
+        .json(new ApiResponse(201, newGame, 'Game created successfully'))
 })
 
 const getGamesById = asyncHandler(async(req,res) =>{

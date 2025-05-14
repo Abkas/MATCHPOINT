@@ -41,6 +41,10 @@ const GameSchema = new Schema({
         }
         }
     ],
+    time: { 
+        type: String, 
+        required: true 
+    }
 }, { timestamps: true });
 
 GameSchema.plugin(mongooseAggregatePaginate);    

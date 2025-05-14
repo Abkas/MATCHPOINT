@@ -20,7 +20,7 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
         throw new ApiError(401, 'Unauthorized request')
     }
 
-    req.user = User
+    req.user = user
     next()
 
     }catch(error){

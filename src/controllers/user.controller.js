@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 import {PlayerProfile} from '../models/playerprofile.model.js'
 import {OrganizerProfile} from '../models/organizerprofile.model.js'
 import {Followers} from '../models/followers.model.js'
-
+import mongoose from 'mongoose'
 
 const generateAccessTokenAndRefreshToken = async (UserId) =>{
     try{
@@ -165,8 +165,8 @@ const logoutUser = asyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set:{
-                refreshToken: undefined
+            $unset:{
+                refreshToken: 1
             }
         },
         {
@@ -243,14 +243,17 @@ const changeCurrentPassword = asyncHandler(async(req, res) =>{
         throw new ApiError(400, 'New password and confirm password do not match')
     }
 
-    const User = await User.findById(req.user?._id) 
-    const isPasswordCorrect = await User.isPasswordCorrect(oldPassword)
+    const user = await User.findById(req.user?._id) 
+    if (!user) {
+        throw new ApiError(404, 'User not found')
+    }
+    const isPasswordCorrect = await user.isPasswordCorrect(oldPassword)
 
     if(!isPasswordCorrect){
         throw new ApiError(400,'Invalid password')
     }
 
-    User.password = newPassword
+    user.password = newPassword
 
     await user.save({validateBeforeSave: false})
 
@@ -329,7 +332,7 @@ const updateUserAvatar = asyncHandler(async(req,res) =>{
     await User.findByIdAndUpdate(
         req.user?._id,
         {
-            set:{
+            $set:{
                 avatar: avatar.url
             }
         },
@@ -338,12 +341,12 @@ const updateUserAvatar = asyncHandler(async(req,res) =>{
 
     return res
         .status(200)
-        .json(new ApiResponse(200, updatedUser, 'Avatar updated successfully'))
+        .json(new ApiResponse(200, {}, 'Avatar updated successfully'))
 
 })
 
-const getUserProfile = asyncHandler(async(req,res) =>{
-    const {username } =req.params
+const getUserProfileFollow = asyncHandler(async(req,res) =>{
+    const {username } =req.params                   
 
     if(!username?.trim()){
         throw new ApiError(400, 'Username is missing')
@@ -377,7 +380,7 @@ const getUserProfile = asyncHandler(async(req,res) =>{
                 $size: '$profileFollowing'
             },
             isFollowing: {
-                $condition: {
+                $cond: {
                     if: {$in:[req.user?._id, '$profileFollowers.follower']},
                     then: true,
                     else: false
@@ -403,7 +406,7 @@ const getUserProfile = asyncHandler(async(req,res) =>{
     return res
     .status(200)
     .json(
-        new ApiResponse(200,channel[0], 'Userfollow fetched sucessfully')
+        new ApiResponse(200,follow[0], 'Userfollow fetched sucessfully')
     )
 
     console.log(follow)
@@ -413,7 +416,7 @@ const getGameHistory = asyncHandler(async(req,res)=>{
     const user = await User.aggregate([
         {
             $match: {
-                _id: new mongoose.Types.ObjectId(req.user_id)
+                _id: new mongoose.Types.ObjectId(req.user._id)
             }
         },{
             $lookup :{
@@ -427,7 +430,7 @@ const getGameHistory = asyncHandler(async(req,res)=>{
                             from:'playerprofiles',
                             localField: 'players',
                             foreignField: '_id',
-                            as:' players',
+                            as:'players',
                             pipeline:[
                                 {
                                     $project:{
@@ -441,12 +444,23 @@ const getGameHistory = asyncHandler(async(req,res)=>{
                             ]
                         }
                     },
+                    {
+                        $addFields:{
+                            players:{
+                                $first:'$players'
+                            }
+                        }
+                    }
                 ]
             }
-
         }
 
     ])
+
+    if (!user || user.length === 0) {
+        throw new ApiError(404, 'User not found or has no match history');
+    }
+
     return res
     .status(200)
     .json(new ApiResponse(200, user[0].matchHistory, 'Match history fetched sucessfully'))
@@ -462,6 +476,6 @@ export {
     getCurrentUser,
     updateAccountDetails,
     updateUserAvatar,
-    getUserProfile,
+    getUserProfileFollow,
     getGameHistory
 }

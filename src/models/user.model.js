@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 
-const PlayerSchema = new Schema(
+const UserSchema = new Schema(
     {
         username:{
             type: String,
@@ -14,6 +14,11 @@ const PlayerSchema = new Schema(
             minLength: 3,
             maxLength: 20,
             index: true,
+        },
+          role: {
+            type: String,
+            enum: ['player', 'organizer'],
+            required: true,
         },
         email:{
             type: String,
@@ -39,85 +44,34 @@ const PlayerSchema = new Schema(
             required: true,
             //default = 
         },
-        skillLevel:{
-            type: String,
-            enum: ['beginner', 'intermediate', 'advanced'],
-            default: 'beginner',
-        },
-        location:{
-            type: String,
-            required: true,
-            trim: true,
-        },
-        bio:{
-            type: String,
-            required: true,
-            trim: true,
-        },
-        preferences:{
-            type: String,
-            enum: ['casual', 'competitive'],
-            default: 'casual',
-        },
-        availability:{
-            type: String,
-            enum: ['weekdays', 'weekends', 'both'],
-            default: 'both',
-        },
-        matchHistory: [
-            { 
-            type: Schema.Types.ObjectId,
-            ref: 'Game' }
-            ],
-        friends: [
-            { 
-            type: Schema.Types.ObjectId,
-            ref: 'Player' 
-            }
-        ],
-        followedFutsals: [
-            { 
-            type: Schema.Types.ObjectId,
-            ref: 'Futsal' 
-            }
-        ],
         refreshToken:{
             type: String,
         },
-
+        matchHistory: [
+        { 
+            type: Schema.Types.ObjectId, 
+            ref: 'Game' 
+        }],
         phoneNumber: {
             type: String,
             required: true,
             unique: true,
             trim: true,
         },
-        reviews: [
-            {
-                player: { 
-                    type: Schema.Types.ObjectId, 
-                    ref: 'Player' 
-                },
-                comment: String,
-                rating: Number,
-            }
-        ]
 
 },{timestamps: true})
 
-
-
-
-PlayerSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next()
     this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 
-PlayerSchema.methods.isPasswordCorrect = async function(password){
+UserSchema.methods.isPasswordCorrect = async function(password){
    return await bcrypt.compare(password, this.password)
 }
 
-PlayerSchema.methods.generateAccesstoken = function(){
+UserSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
             _id : this._id,
@@ -132,8 +86,7 @@ PlayerSchema.methods.generateAccesstoken = function(){
     )
 }
 
-
-PlayerSchema.methods.generateRefreshtoken = function(){
+UserSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
             _id : this._id,
@@ -147,4 +100,4 @@ PlayerSchema.methods.generateRefreshtoken = function(){
 
 
 
-export const Player = mongoose.model('Player', PlayerSchema)
+export const User = mongoose.model('User', UserSchema)

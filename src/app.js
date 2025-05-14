@@ -20,10 +20,10 @@ app.use(cookieParser())
 
 
 //routes
-import playerRouter from './routes/player.route.js'     
+import UserRouter from './routes/user.route.js'     
 //routes declaration
 
-app.use('/api/v1/players', playerRouter)
+app.use('/api/v1/users', UserRouter)
 
 
 export {app}

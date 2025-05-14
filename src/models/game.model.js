@@ -1,8 +1,6 @@
 import mongoose, {Schema} from 'mongoose' 
 import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2'
 
-
-
 const GameSchema = new Schema({
     futsal: { 
         type: Schema.Types.ObjectId,
@@ -17,7 +15,7 @@ const GameSchema = new Schema({
     players: [
         {
         type: Schema.Types.ObjectId, 
-        ref: 'Player' 
+        ref: 'PlayerProfile' 
         }
     ],
     result: {

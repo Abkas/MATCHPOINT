@@ -15,7 +15,7 @@ const FutsalSchema = new Schema({
     },
     organizer: { 
         type: Schema.Types.ObjectId,
-        ref: 'Organizer',
+        ref: 'OrganizerProfile',
         required: true 
         },
     slots: [
@@ -33,7 +33,7 @@ const FutsalSchema = new Schema({
     followers: [
         {
         type: Schema.Types.ObjectId,
-        ref: 'Player' 
+        ref: 'PlayerProfile' 
         }
     ],
 }, { timestamps: true });
@@ -51,6 +51,7 @@ FutsalSchema.methods.removeFollower = function (playerId) {
     this.followers.pull(playerId);
     return this.save();
 };
+
 FutsalSchema.methods.getFollowersCount = function () {
     return this.followers.length;
 }
@@ -58,6 +59,7 @@ FutsalSchema.methods.getFollowersCount = function () {
 FutsalSchema.methods.getReviews = function () {
     return this.reviews;
 }
+
 FutsalSchema.methods.addReview = function (reviewId) {
     this.reviews.push(reviewId);
     return this.save();

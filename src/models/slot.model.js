@@ -18,7 +18,7 @@ const SlotSchema = new Schema({
     players: [
         {
         type: Schema.Types.ObjectId,
-        ref: 'Player' 
+        ref: 'PlayerProfile' 
         }
     ],
     maxPlayers: {
@@ -37,7 +37,7 @@ const SlotSchema = new Schema({
         { 
         playerId: {
             type: Schema.Types.ObjectId,
-            ref: 'Player' 
+            ref: 'PlayerProfile' 
         },
         paid: Boolean 
         }

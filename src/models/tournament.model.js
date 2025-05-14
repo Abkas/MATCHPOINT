@@ -7,7 +7,7 @@ const TournamentSchema = new Schema({
     },
     organizer: { 
         type: Schema.Types.ObjectId,
-        ref: 'Organizer',
+        ref: 'OrganizerProfile',
         required: true 
     },
     startDate: { 
@@ -23,7 +23,7 @@ const TournamentSchema = new Schema({
         players: [
             { 
             type: Schema.Types.ObjectId,
-            ref: 'Player' 
+            ref: 'PlayerProfile' 
             }
         ],
     }],

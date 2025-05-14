@@ -16,14 +16,7 @@ const FutsalSchema = new Schema({
     organizer: { 
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true 
         },
-    slots: [
-        {
-        type: Schema.Types.ObjectId,
-        ref: 'Slot' 
-        }
-    ],
     reviews: [
         {
         type: Schema.Types.ObjectId,

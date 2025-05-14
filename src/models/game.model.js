@@ -1,5 +1,6 @@
 import mongoose, {Schema} from 'mongoose' 
 import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2'
+import { GAME_STATUS } from '../constants.js'
 
 const GameSchema = new Schema({
     futsal: { 
@@ -18,6 +19,11 @@ const GameSchema = new Schema({
         ref: 'User' 
         }
     ],
+    status: { 
+    type: String, 
+    enum: Object.values(GAME_STATUS), 
+    default: GAME_STATUS.SCHEDULED 
+    },
     result: {
         type: String 
     },
@@ -28,7 +34,11 @@ const GameSchema = new Schema({
             ref: 'User' 
         },
         comment: String,
-        rating: Number,
+        rating: {
+            type: Number,
+            min: 1,
+            max: 5
+        }
         }
     ],
 }, { timestamps: true });

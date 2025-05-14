@@ -15,7 +15,7 @@ const GameSchema = new Schema({
     players: [
         {
         type: Schema.Types.ObjectId, 
-        ref: 'PlayerProfile' 
+        ref: 'User' 
         }
     ],
     result: {
@@ -25,7 +25,7 @@ const GameSchema = new Schema({
         {
         player: { 
             type: Schema.Types.ObjectId, 
-            ref: 'Player' 
+            ref: 'User' 
         },
         comment: String,
         rating: Number,

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2'
 
 
 const SlotSchema = new Schema({
@@ -18,7 +19,7 @@ const SlotSchema = new Schema({
     players: [
         {
         type: Schema.Types.ObjectId,
-        ref: 'PlayerProfile' 
+        ref: 'User' 
         }
     ],
     maxPlayers: {
@@ -37,7 +38,7 @@ const SlotSchema = new Schema({
         { 
         playerId: {
             type: Schema.Types.ObjectId,
-            ref: 'PlayerProfile' 
+            ref: 'User' 
         },
         paid: Boolean 
         }

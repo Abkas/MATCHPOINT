@@ -1,5 +1,5 @@
 import mongoose, {Schema} from 'mongoose'
-
+import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2'
 
 const FutsalSchema = new Schema({
     name: { 
@@ -15,7 +15,7 @@ const FutsalSchema = new Schema({
     },
     organizer: { 
         type: Schema.Types.ObjectId,
-        ref: 'OrganizerProfile',
+        ref: 'User',
         required: true 
         },
     slots: [
@@ -33,7 +33,7 @@ const FutsalSchema = new Schema({
     followers: [
         {
         type: Schema.Types.ObjectId,
-        ref: 'PlayerProfile' 
+        ref: 'User' 
         }
     ],
 }, { timestamps: true });

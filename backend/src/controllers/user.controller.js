@@ -9,6 +9,7 @@ import {OrganizerProfile} from '../models/organizerprofile.model.js'
 import {Followers} from '../models/followers.model.js'
 import mongoose from 'mongoose'
 
+
 const generateAccessTokenAndRefreshToken = async (UserId) =>{
     try{
         const user = await User.findById(UserId)
@@ -25,9 +26,9 @@ const generateAccessTokenAndRefreshToken = async (UserId) =>{
 }
 
 const signUpUser = asyncHandler(async (req, res) => {
-    const { email, password, role } = req.body
+    const { email, password, role, username } = req.body
 
-    if ([password, email].some((field) => !field?.trim())) {
+    if ([password, email, username].some((field) => !field?.trim())) {
         throw new ApiError(400, 'All fields are required')
     }
 
@@ -36,7 +37,7 @@ const signUpUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, 'User already exists with same email')
     }
 
-    const newUser = await User.create({ email, password, role })
+    const newUser = await User.create({ email, password, role, username })
 
     let profile;
     if (role === 'player') {
@@ -55,9 +56,10 @@ const signUpUser = asyncHandler(async (req, res) => {
         throw new ApiError(500, 'Failed to create User')
     }
 
-    return res.status(201).json(new ApiResponse(201, userCreated, 'User created successfully'))
+    return res
+    .status(201)
+    .json(new ApiResponse(201, userCreated, 'User created successfully'))
 })
-
 
 const registerUser = asyncHandler(async (req, res) => {
     const allowedFields = [

@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 0.7rem;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+}
+
+.logo-subtext {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav ul li {
+    margin: 0 15px;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon, .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.sidebar-menu li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.sidebar-menu li.active {
+    background-color: #f0f5e9;
+    border-left: 4px solid #4CAF50;
+}
+
+.sidebar-menu li.active a {
+    color: #4CAF50;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.greeting {
+    color: #4CAF50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.greeting::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #4CAF50;
+}
+
+/* Profile Card */
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.profile-bio {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Stats Card */
+.stats-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.stat-divider {
+    width: 1px;
+    background-color: #e0e0e0;
+}
+
+/* Badges Section */
+.badges-section {
+    margin-bottom: 20px;
+}
+
+.badges-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.badges-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.badge {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-badge {
+    color: #000;
+}
+
+.red-badge {
+    color: #e74c3c;
+}
+
+.blue-badge {
+    color: #3498db;
+}
+
+.outline-badge {
+    color: #000;
+}
+
+.show-more-btn {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* Recent Matches */
+.recent-matches h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.matches-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.matches-table th, .matches-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.matches-table th {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.matches-table td {
+    font-size: 0.85rem;
+}
+
+/* Responsive styles for min-width: 453px and max-width: 745px */
+@media (min-width: 453px) and (max-width: 745px) {
+    .top-nav {
+        padding: 8px 15px;
+    }
+    .user-actions {
+        display: flex;
+        align-items: center;
+        margin-right: -185px;
+    }
+    .main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    .sidebar {
+        width: 180px;
+    }
+    
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .stats-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .stat-divider {
+        width: 100%;
+        height: 1px;
+    }
+    
+    .badges-container {
+        justify-content: center;
+    }
+    
+    .matches-table th, .matches-table td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsive styles for min-width: 748px and max-width: 832px */
+@media (min-width: 748px) and (max-width: 832px) {
+    .top-nav {
+        padding: 10px 15px;
+    }
+    
+    .main-nav ul li {
+        margin: 0 12px;
+    }
+    
+    .sidebar {
+        width: 200px;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .profile-name {
+        font-size: 1.3rem;
+    }
+    
+    .profile-bio {
+        font-size: 0.85rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 0.9rem;
+    }
+    
+    .stat-item p {
+        font-size: 1.3rem;
+    }
+    
+    .badge {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .matches-table th, .matches-table td {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
+}

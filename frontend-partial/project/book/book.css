@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #e5c1c1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.booking-card {
+    background-color: #1e1e2e;
+    border-radius: 30px;
+    padding: 40px 30px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.slots-banner {
+    background-color: #8de0c8;
+    border-radius: 30px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.slots-banner p {
+    color: #d32f2f;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.venue-info {
+    margin-bottom: 30px;
+}
+
+.venue-info h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -6px;
+}
+
+.location-icon {
+    margin-right: 5px;
+}
+
+.time-slot {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.slot-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slot-selector p {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.round-btn {
+    width: 35px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+#slot-count {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 8px;
+}
+
+.total-cost {
+    margin-left: -2px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: flex;
+    gap: 6px;
+}
+
+
+
+.note-section {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.note-section p:first-child {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.note-text {
+    color: #f1e05a;
+    font-size: 18px;
+    max-width: 350px;
+}
+
+.confirm-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 480px) {
+    .booking-card {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .slots-banner p {
+        font-size: 18px;
+    }
+    
+    .venue-info h2 {
+        font-size: 22px;
+    }
+    
+    .note-section {
+        flex-direction: column;
+    }
+    
+    .note-section p:first-child {
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferences Form</title>
+    <link rel="stylesheet" href="signup4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="main-heading">Hello, Let's Get Started</h1>
+            
+            <h2 class="sub-heading">Almost Done!</h2>
+            
+            <form class="preferences-form">
+                <div class="form-group">
+                    <label for="time">Choose your preferred time:</label>
+                    <select id="time" class="form-select">
+                        <option value="" disabled selected>Choose from options below:</option>
+                        <option value="morning">Morning (8AM - 12PM)</option>
+                        <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                        <option value="evening">Evening (5PM - 9PM)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Choose your preferred price range:</label>
+                    <select id="price" class="form-select">
+                        <option value="" disabled selected>Choose from options below:</option>
+                        <option value="budget">Budget ($0 - $50)</option>
+                        <option value="mid">Mid-range ($50 - $100)</option>
+                        <option value="premium">Premium ($100+)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Are you looking for a team?</label>
+                    <div class="button-group">
+                        <button type="button" class="option-button" id="yes-button">YES</button>
+                        <button type="button" class="option-button" id="no-button">NO</button>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button type="button" class="prev-button">Prev</button>
+                    <button type="button" class="next-button">Next 3/4</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="signup4.js"></script>
+</body>
+</html>

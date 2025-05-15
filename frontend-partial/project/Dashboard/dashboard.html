@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futsal Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="logo">
+         
+            <img src="match-point-logo .png" alt="POINT Logo" class="logo-img">
+          
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Book Futsal</a></li>
+                <li><a href="#">Tournaments</a></li>
+                <li><a href="#">Quick Match</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <div class="notification-icon">
+                <img src="icon2.png" alt="POINT Logo" class="logo-img" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                
+            </div>
+            <div class="profile-icon">
+                <img src="icon1.png" alt="Profile"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                    
+               
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Add Friends</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Upcoming Matches</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1 class="greeting">Hello, Rajesh</h1>
+
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="profilepic.png" alt="Rajesh Hamal">
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">Rajesh Hamal</h2>
+                    <p class="profile-bio">"Passionate about sports and always ready for a match. Looking to connect with players nearby and enjoy great games together!"</p>
+                    <div class="profile-tags">
+                        <span class="tag">FUTSAL LOVER</span>
+                        <span class="tag">CASUAL</span>
+                        <span class="tag">FRIENDLY</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="stat-item">
+                    <h3>Matches Played</h3>
+                    <p>24</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3>Friends</h3>
+                    <p>200</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3>Player Rating</h3>
+                    <p>8/10</p>
+                </div>
+            </div>
+
+            <div class="badges-section">
+                <h2>Badges earned:</h2>
+                <div class="badges-container">
+                    <div class="badge black-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="badge red-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="badge outline-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="badge outline-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <div class="badge blue-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <button class="show-more-btn">Show more</button>
+                </div>
+            </div>
+
+            <div class="recent-matches">
+                <h2>Recent Matches:</h2>
+                <div class="table-container">
+                    <table class="matches-table">
+                        <thead>
+                            <tr>
+                                <th>Date:</th>
+                                <th>Time:</th>
+                                <th>Place:</th>
+                                <th>Futsal:</th>
+                                <th>Paid:</th>
+                                <th>Review:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25th April,2025</td>
+                                <td>12:00-01:00</td>
+                                <td>Kathmandu, Nepal</td>
+                                <td>Kathmandu Futsal Co</td>
+                                <td>Rs 200</td>
+                                <td>8.5/10</td>
+                            </tr>
+                            <tr>
+                                <td>25th April,2025</td>
+                                <td>12:00-01:00</td>
+                                <td>Kathmandu, Nepal</td>
+                                <td>Kathmandu Futsal Co</td>
+                                <td>Rs 200</td>
+                                <td>8.5/10</td>
+                            </tr>
+                            <tr>
+                                <td>25th April,2025</td>
+                                <td>12:00-01:00</td>
+                                <td>Kathmandu, Nepal</td>
+                                <td>Kathmandu Futsal Co</td>
+                                <td>Rs 200</td>
+                                <td>Not Rated</td>
+                            </tr>
+                            <tr>
+                                <td>25th April,2025</td>
+                                <td>12:00-01:00</td>
+                                <td>Kathmandu, Nepal</td>
+                                <td>Kathmandu Futsal Co</td>
+                                <td>Rs 200</td>
+                                <td>Not Rated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

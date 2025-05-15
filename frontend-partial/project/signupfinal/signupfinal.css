@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f0f5e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background-color: #f0f5e9;
+    width: 100%;
+    max-width: 832px;
+    min-width: 453px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-heading {
+    color: #4CAF50;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.main-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #4CAF50;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.photo-section, .default-section, .people-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.photo-upload {
+    width: 150px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.edit-button {
+    color: #a83232;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.avatar-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.avatar-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.person-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.person-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.person-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.person-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.person-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.person-location {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.person-tags {
+    display: flex;
+    gap: 5px;
+}
+
+.tag {
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.futsal-tag {
+    background-color: #f0f0f0;
+}
+
+.competitive-tag {
+    background-color: #f0f0f0;
+}
+
+.casual-tag {
+    background-color: #f0f0f0;
+}
+
+.add-friend-btn {
+    background-color: #4DB6AC;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-friend-btn:hover {
+    background-color: #26A69A;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.prev-button {
+    background-color: #f0ff8d;
+    color: #000;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.launch-button {
+    background-color: #FFA726;
+    color: #000;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prev-button:hover {
+    background-color: #e6f57a;
+}
+
+.launch-button:hover {
+    background-color: #FB8C00;
+}
+
+/* Responsive styles for min-width: 453px and max-width: 745px */
+@media (min-width: 453px) and (max-width: 745px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .main-heading {
+        font-size: 1.8rem;
+    }
+    
+    label {
+        font-size: 1rem;
+    }
+    
+    .photo-upload {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .avatar-option {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .person-card {
+        padding: 8px 12px;
+    }
+    
+    .person-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .person-name {
+        font-size: 0.85rem;
+    }
+    
+    .person-location {
+        font-size: 0.75rem;
+    }
+    
+    .tag {
+        padding: 2px 6px;
+        font-size: 0.65rem;
+    }
+    
+    .add-friend-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .navigation-buttons {
+        margin-top: 15px;
+    }
+    
+    .prev-button, .launch-button {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive styles for min-width: 748px and max-width: 832px */
+@media (min-width: 748px) and (max-width: 832px) {
+    .form-container {
+        padding: 20px;
+    }
+    
+    .main-heading {
+        font-size: 1.9rem;
+    }
+    
+    label {
+        font-size: 1.05rem;
+    }
+    
+    .photo-upload {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .avatar-option {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .person-card {
+        padding: 9px 14px;
+    }
+    
+    .person-img {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .person-name {
+        font-size: 0.88rem;
+    }
+    
+    .person-location {
+        font-size: 0.78rem;
+    }
+    
+    .tag {
+        padding: 3px 7px;
+        font-size: 0.68rem;
+    }
+    
+    .add-friend-btn {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+    }
+    
+    .navigation-buttons {
+        margin-top: 18px;
+    }
+    
+    .prev-button, .launch-button {
+        padding: 11px 28px;
+        font-size: 0.98rem;
+    }
+}

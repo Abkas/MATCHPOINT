@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.notification, .profile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+/* Container */
+.container {
+    display: flex;
+    min-height: calc(100vh - 81px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a.active {
+    color: #4CAF50;
+}
+
+.sidebar ul li a:hover {
+    background-color: #f9f9f9;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* Profile Card */
+.profile-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-image {
+    margin-bottom: 20px;
+}
+
+.circle-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.active-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
+
+.bio {
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.tags-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tags-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.friends-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.count {
+    font-weight: 600;
+}
+
+.show-all-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Personal Info Card */
+.personal-info-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.info-label {
+    width: 150px;
+    font-weight: 500;
+}
+
+.info-value {
+    flex: 1;
+}
+
+/* Media Queries */
+@media (min-width: 748px) and (max-width: 832px) {
+    .sidebar {
+        width: 180px;
+    }
+    
+    .sidebar ul li a {
+        padding: 15px;
+        font-size: 14px;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .profile-card, .personal-info-card {
+        padding: 20px;
+    }
+    
+    .circle-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    .bio {
+        font-size: 14px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    .info-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 453px) and (max-width: 745px) {
+    header {
+        padding: 10px 15px;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
+    nav ul li {
+        margin: 0 8px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+    
+    .sidebar ul li {
+        border-bottom: none;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .sidebar ul li a {
+        padding: 15px;
+        white-space: nowrap;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .profile-card, .personal-info-card {
+        padding: 15px;
+    }
+    
+    .circle-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    .bio {
+        font-size: 13px;
+    }
+    
+    .tags .tag {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    
+    .info-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 452px) {
+    header {
+        padding: 10px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    nav {
+        display: none;
+    }
+    
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+    
+    .sidebar ul li {
+        border-bottom: none;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .sidebar ul li a {
+        padding: 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .profile-card, .personal-info-card {
+        padding: 15px;
+    }
+    
+    .circle-placeholder {
+        width: 100px;
+        height: 100px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .bio {
+        font-size: 12px;
+    }
+    
+    .tags .tag {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    
+    .info-label {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    
+    .info-value {
+        font-size: 14px;
+    }
+}

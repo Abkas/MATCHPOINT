@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Point - Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="match-point-logo.png" alt="Match Point">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../Dashboard/dashboard.html">Home</a></li>
+                <li><a href="#">Book Futsal</a></li>
+                <li><a href="#">Tournaments</a></li>
+                <li><a href="#">Quick Match</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="#" class="notification">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+            </a>
+            <a href="#" class="profile-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                <li><a href="#" class="active">Profile</a></li>
+                <li><a href="#">Add Friends</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Upcoming Matches</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <h1>Profile Details</h1>
+            
+            <div class="profile-card">
+                <div class="profile-image">
+                    <div class="circle-placeholder"></div>
+                </div>
+                
+                <h2>Rajesh Hamal</h2>
+                
+                <div class="active-status">
+                    <span class="dot"></span>
+                    <span>Active since: 2024/12/12</span>
+                </div>
+                
+                <p class="bio">
+                    Passionate about sports and always ready for a match.<br>
+                    Looking to connect with players nearby and enjoy<br>
+                    great games together!
+                </p>
+                
+                <div class="tags-section">
+                    <div class="tags-header">
+                        <h3>Tags:</h3>
+                        <button class="edit-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="tags">
+                        <span class="tag">FUTSAL LOVER</span>
+                        <span class="tag">CASUAL</span>
+                        <span class="tag">FRIENDLY</span>
+                    </div>
+                </div>
+                
+                <div class="friends-section">
+                    <span>Friends:</span>
+                    <span class="count">203</span>
+                    <button class="show-all-btn">Show all</button>
+                </div>
+            </div>
+            
+            <div class="personal-info-card">
+                <div class="card-header">
+                    <h3>Personal Info:</h3>
+                    <button class="edit-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Phone no:</div>
+                    <div class="info-value">+977- 9898989898</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">rajesh@gmail.com</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Location:</div>
+                    <div class="info-value">Kathmandu, Nepal</div>
+                </div>
+                
+                <div class="info-row">
+                    <div class="info-label">Date of Birth:</div>
+                    <div class="info-value">1997/12/12</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

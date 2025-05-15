@@ -8,13 +8,13 @@ const UserSchema = new Schema(
     {
         username:{
             type: String,
-            required: true,
             unique: true,
             trim: true,
             lowercase: true,
             minLength: 3,
             maxLength: 20,
             index: true,
+            required: true
         },
           role: {
             type: String,
@@ -30,19 +30,15 @@ const UserSchema = new Schema(
         },
         fullName:{
             type: String,
-            required: true,
             trim: true,
             index: true
         },
         password:{
             type: String,
             required: [true,'Password is required'],
-            minLength: 6,
-            maxLength: 20,
         },
         avatar:{
             type:String, //Cloudinary URL
-            required: true,
             //default = 
         },
         refreshToken:{
@@ -55,7 +51,6 @@ const UserSchema = new Schema(
         }],
         phoneNumber: {
             type: String,
-            required: true,
             unique: true,
             trim: true,
         },

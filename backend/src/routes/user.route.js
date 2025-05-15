@@ -2,6 +2,7 @@ import {Router} from 'express'
 import {
     registerUser, 
     loginUser, 
+    signUpUser,
     logoutUser, 
     refreshAccessToken,
     getGameHistory, 
@@ -18,21 +19,15 @@ import {verifyJWT} from '../middlewares/auth.middleware.js'
 const router = Router()
 
 router
-.route('/register').
-post(
-    upload.fields([
-        {
-            name: 'avatar',
-            maxCount: 1
-        }
-    ]),
-    registerUser
-)
-
-router
 .route('/login')
 .post(
     loginUser
+)
+
+router
+.route('/sign-up')
+.post(
+    signUpUser
 )
 
 //secured routes
@@ -67,6 +62,18 @@ router
 router
 .route('/history')
 .get(verifyJWT, getGameHistory)
+
+router
+.route('/register').
+post(verifyJWT,
+    upload.fields([
+        {
+            name: 'avatar',
+            maxCount: 1
+        }
+    ]),
+    registerUser
+)
 
 
 export default router   

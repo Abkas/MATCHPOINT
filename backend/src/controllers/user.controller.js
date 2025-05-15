@@ -24,85 +24,86 @@ const generateAccessTokenAndRefreshToken = async (UserId) =>{
     }
 }
 
-const registerUser = asyncHandler( async(req, res) =>{
-     //get Users data from frontend
-     //validation- not empty
-     //check if User already exists : username, email
-     //check for images , check for avatar
-     //upload them to cloudinary, avatar
-     //User create object - create entry in db
-     //remove password and refresh token field from res
-     //check for User creation
-     //return response
+const signUpUser = asyncHandler(async (req, res) => {
+    const { email, password, role } = req.body
 
-    const {username, email, password, fullName, phoneNumber,role} = req.body
-    console.log(req.body)
-
-    if(
-        [fullName, email, password, username, phoneNumber,role].some((field) => {
-            return field?.trim() === ''
-        })
-    ) {
-        throw new ApiError(400,'All fields are required')
+    if ([password, email].some((field) => !field?.trim())) {
+        throw new ApiError(400, 'All fields are required')
     }
 
-    const existedUser = await User.findOne({
-        $or: [
-            {username},
-            {email}
-        ]
-    })
-    if(existedUser) {
-        throw new ApiError(409, 'User already exists with same email or username')
-    }
-     
-    //check for images
-    const avatarLocalPath = req.files && req.files.avatar && req.files.avatar[0] ? req.files.avatar[0].path : null;
-
-    if (!avatarLocalPath) {
-        throw new ApiError(400, 'Avatar is required');
+    const existedUser = await User.findOne({ email })
+    if (existedUser) {
+        throw new ApiError(409, 'User already exists with same email')
     }
 
+    const newUser = await User.create({ email, password, role })
 
-    //upload to cloudinary
-
-    const avatar = await uploadOnCloudinary(avatarLocalPath, 'avatars')
-    if (!avatar) {
-        throw new ApiError(500, 'Failed to upload avatar')
-    }
-
-    //create User object
-    const newUser =  await User.create({
-        username,
-        avatar: avatar.url,
-        email,
-        password,
-        fullName: fullName.toLowerCase(),
-        phoneNumber,
-        role
-    })
-
-    let profile
-
+    let profile;
     if (role === 'player') {
-        profile = await PlayerProfile.create({ user: newUser._id});
-        newUser.playerProfile = profile._id;
-    }else if (role === 'organizer') {
-        profile = await OrganizerProfile.create({ user: newUser._id });
-        newUser.organizerProfile = profile._id;
+        profile = await PlayerProfile.create({ user: newUser._id })
+        newUser.playerProfile = profile._id
+    } else if (role === 'organizer') {
+        profile = await OrganizerProfile.create({ user: newUser._id })
+        newUser.organizerProfile = profile._id
     }
-    
-    const UserCreated = await User.findById(newUser._id).select('-password -refreshToken')
 
-    if(!UserCreated) {
+    await newUser.save();
+
+    const userCreated = await User.findById(newUser._id).select('-password -refreshToken')
+
+    if (!userCreated) {
         throw new ApiError(500, 'Failed to create User')
     }
 
+    return res.status(201).json(new ApiResponse(201, userCreated, 'User created successfully'))
+})
+
+
+const registerUser = asyncHandler(async (req, res) => {
+    const allowedFields = [
+        'fullName', 'username', 'bio', 'preferences',
+        'phoneNumber', 'availability', 'location', 'skillLevel'
+    ]
+
+    const updateFields = {}
+    allowedFields.forEach(field => {
+        if (req.body[field] !== undefined) {
+            updateFields[field] = req.body[field]
+        }
+    })
+
+    if (req.files && req.files.avatar && req.files.avatar[0]) {
+        const avatarLocalPath = req.files.avatar[0].path;
+        const avatar = await uploadOnCloudinary(avatarLocalPath, 'avatars')
+        if (!avatar || !avatar.url) {
+            throw new ApiError(500, 'Failed to upload avatar')
+        }
+        updateFields.avatar = avatar.url
+    }
+
+    if (updateFields.username) {
+        const existedUser = await User.findOne({
+            username: updateFields.username,
+            _id: { $ne: req.user._id }
+        });
+        if (existedUser) {
+            throw new ApiError(409, 'User already exists with same username')
+        }
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: updateFields },
+        { new: true }
+    ).select('-password -refreshToken')
+
+    if (!updatedUser) {
+        throw new ApiError(500, 'User update failed')
+    }
+
     return res
-    .status(201)
-    .json(
-        new ApiResponse(201, UserCreated, 'User created successfully')
-    )
+        .status(200)
+        .json(new ApiResponse(200, updatedUser, 'User profile updated successfully'))
 })
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -477,5 +478,6 @@ export {
     updateAccountDetails,
     updateUserAvatar,
     getUserProfileFollow,
-    getGameHistory
+    getGameHistory,
+    signUpUser
 }
